@@ -47,8 +47,25 @@ namespace Xamarin.Forms.Platform.Android.Material
 		public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
 		public event EventHandler<PropertyChangedEventArgs> ElementPropertyChanged;
 
-		public MaterialButtonRenderer(Context context)
-			: base(new ContextThemeWrapper(context, Resource.Style.XamarinFormsMaterialTheme))
+		static int getThemeId(BindableObject element)
+		{
+			var style = Xamarin.Forms.Material.Button.GetStyle(element);
+			int themeId = Resource.Style.XamarinFormsMaterialTheme;
+			switch (style)
+			{
+				case Xamarin.Forms.Material.Style.Outline:
+					themeId = Resource.Style.XamarinFormsMaterialOutlinedButtonTheme;
+					break;
+				case Xamarin.Forms.Material.Style.Text:
+					themeId = Resource.Style.XamarinFormsMaterialTextButtonTheme;
+					break;
+			}
+
+			return themeId;
+		}
+
+		public MaterialButtonRenderer(Context context, BindableObject element)
+			: base(new ContextThemeWrapper(context, getThemeId(element)))
 		{
 			VisualElement.VerifyVisualFlagEnabled();
 
