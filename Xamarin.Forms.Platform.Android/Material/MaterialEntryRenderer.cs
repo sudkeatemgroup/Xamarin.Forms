@@ -11,7 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android.Material;
 using AColor = Android.Graphics.Color;
 
-[assembly: ExportRenderer(typeof(Xamarin.Forms.Entry), typeof(MaterialEntryRenderer), new[] { typeof(VisualRendererMarker.Material) })]
+[assembly: ExportRenderer(typeof(Xamarin.Forms.Entry), typeof(MaterialEntryRenderer), new[] { typeof(VisualMarker.MaterialVisual) })]
 namespace Xamarin.Forms.Platform.Android.Material
 {
 	public sealed class MaterialEntryRenderer : EntryRendererBase<MaterialFormsTextInputLayout>
