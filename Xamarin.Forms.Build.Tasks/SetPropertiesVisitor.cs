@@ -379,7 +379,7 @@ namespace Xamarin.Forms.Build.Tasks
 				n = n.Parent as IElementNode;
 			}
 			if (!((dataTypeNode as ValueNode)?.Value is string dataType))
-				yield break; //throw
+				throw new XamlParseException($"x:DataType expect a string literal", dataTypeNode as IXmlLineInfo);
 
 			var prefix = dataType.Contains(":") ? dataType.Substring(0, dataType.IndexOf(":", StringComparison.Ordinal)) : "";
 			var namespaceuri = node.NamespaceResolver.LookupNamespace(prefix) ?? "";
